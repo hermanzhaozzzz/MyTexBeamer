@@ -1,0 +1,265 @@
+% --------------------------------------------------------------->
+% 导言区
+% --------------------------------------------------------------->
+% --------------------------->
+% 声明为beamer slides
+% beamer 模板主题通常由 theme，outertheme，innertheme，colortheme 构成
+%   theme 是整体的主题，起一个统筹的作用
+%   outertheme 控制普通页面（frame）的结构和框架
+%   innertheme 用来调整标题页，小节页的组成，也会用来控制普通页面内一些特殊结构的样式（比如脚注、列表、表格等）
+%   colortheme 就是整体模板的配色了，给人带来的视觉影响也是最为强烈的
+% --------------------------->
+\documentclass{beamer}
+% \documentclass[xcolor=dvipsnames]{beamer} % dvipsnames gives more built-in colors
+
+% --------------------------->
+% theme
+%   引入自定义主题 metropolis
+%   使用方法查看文档 texdoc metropolis
+%   metropolis不是 beamer 内标准的模板之一
+%   如果没有的话可以尝试先通过 sudo tlmgr update --all 更新 TeX Live
+%   如果还不行的话可以在 github 上面找到 mtheme，这本身也是一个非常好看的模板
+%   https://github.com/matze/mtheme
+% innertheme
+%   在原本的 metropolis 的基础上添加了一点圆角的元素，使得 block 边角平滑，列表样式更好看
+%   block 的 shadow 用的 false，也可以写成 true
+
+% outertheme
+%   使用的是 infolines, 相对于原本的 metropolis 而言，能够在页面中添加 footline，设定页面内文本标题对齐
+% colortheme
+%   这里用的默认, 修改方法见 https://www.zhihu.com/question/29676847/answer/2070402882
+% --------------------------->
+% theme
+\usetheme[block=fill, sectionpage=none]{metropolis}
+% innertheme
+\useinnertheme{metropolis}
+\setbeamertemplate{blocks}[rounded][shadow=false] % 扁平化还是带阴影的块
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{sections/subsections in toc}[ball]
+\setbeamerfont{footnote}{size=\tiny}
+
+% outertheme
+% infolines miniframes shadow sidebar smoothbars smoothtree split tree
+\useoutertheme[]{infolines}
+
+% colortheme
+% \usecolortheme[]{metropolis} % default
+% \usecolortheme[]{metropolis-highcontrast}
+% \usecolortheme[]{metropolis-sky}
+\usecolortheme[]{metropolis-forest}
+
+% --------------------------->
+% beamerposter
+% 设置slides比例为16:9
+% --------------------------->
+\usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.5,debug]{beamerposter}
+
+
+% --------------------------->
+% fontset = ⟨adobe|fandol|founder|mac|macnew|macold|ubuntu|windows|none|...⟩
+
+% 设置中文支持，使用CTEX
+% CTEX宏集会根据用户使用的编译方式
+% pdfLaTeX -> CJK
+% XeLaTeX -> xeCJK
+% LuaLaTeX -> LuaTeX-ja
+% upLaTeX -> 原生支持
+% 文档 -> 编译方式、编码与中文字库：macOS+XeLaTeX+xeCJK使用华文字库+苹方字体
+
+% Fira Fonts
+% # Fonts also available at: https://github.com/bBoxType/FiraSans
+
+% wget "https://bboxtype.com/downloads/Fira/Download_Folder_FiraSans_4301.zip"
+% wget "https://bboxtype.com/downloads/Fira/Fira_Mono_3_2.zip"
+% unzip Download_Folder_FiraSans_4301.zip
+% unzip Fira_Mono_3_2.zip
+
+% brew install font-noto-sans-cjk font-noto-serif-cjk
+% --------------------------->
+\usepackage[fontset=mac]{ctex}
+
+% --------------------------->
+% 使用 booktabs 添加三线表语法
+% \toprule[ 〈 wd 〉 ]
+% \midrule[ 〈 wd 〉 ]
+% \bottomrule[ 〈 wd 〉 ]
+% --------------------------->
+\usepackage{booktabs}
+% --------------------------->
+% 引用图片
+% --------------------------->
+\usepackage{graphicx}
+% --------------------------->
+% 使用项目符号和子项目符号
+% --------------------------->
+\usepackage{outlines}
+\makeatletter
+\newenvironment{myoutline}[1][]{%
+  \ifthenelse{\equal{#1}{}}{}{\renewcommand{\ol@type}{#1}}%
+  \ol@z%
+  \newcommand{\0}{\ol@toz\ol@z}%
+  \newcommand{\1}{\ol@toi\bfseries\ol@i\item}%
+  \newcommand{\2}{\ol@toii\tiny\ol@ii\item}%
+  \newcommand{\3}{\ol@toiii\tiny\ol@iii\item}%
+  \newcommand{\4}{\ol@toiiii\tiny\ol@iiii\item}%
+}{%
+  \ol@toz\ol@exit%
+}
+\makeatother
+
+% --------------------------->
+% 一个logo库
+% --------------------------->
+% \usepackage[scale=2]{ccicons}
+
+% --------------------------->
+% 一个绘图库
+% --------------------------->
+% \usepackage{pgfplots}
+% \usepgfplotslibrary{dateplot}
+
+% --------------------------->
+% \xspace should be used at the end of a macro designed to be used mainly in text. 
+% It adds a space unless the macro is followed by certain punctuation characters.
+% --------------------------->
+% \usepackage{xspace}
+
+% --------------------------->
+% 定义颜色所用的三个包
+% --------------------------->
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{textcomp} % 应该加上，否则容易报错
+\definecolor{myred}{rgb}{0.9,0,0}
+\definecolor{mygreen}{rgb}{0,0.9,0}
+\definecolor{myblue}{rgb}{0,0,0.9}
+\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0}
+\definecolor{myPurple}{rgb}{0.5,0.0,0.5}
+
+% --------------------------->
+% Bookmark
+% --------------------------->
+\usepackage{bookmark}
+% --------------------------->
+% 代码格式化排版, 代码高亮
+% --------------------------->
+\usepackage{listings}
+
+\lstloadlanguages{Python}
+\lstset{language=Python,
+  frame=leftline,   % 代码边框格式, none 不显示背景边框 single 单线框 none, leftline, topline, bottomline, lines
+  basicstyle=\tiny \ttfamily, % 代码字体大小 使用teletype字体（一种等宽字体
+  columns=fixed, % 不知道啥, 看看文档?
+  backgroundcolor=\color[RGB]{246, 246, 246}, % 设定背景颜色
+  keywordstyle=\color{myblue}\tiny\bfseries,  % primitive funs in bold blue
+  stringstyle=\color{myPurple},  % strings in purple
+  showstringspaces=false,
+  commentstyle=\usefont{T1}{pcr}{m}{sl}\color{DarkGreen}\tiny, % 注释字体大小
+  tabsize=4,
+  % more standard python funcs
+  morekeywords={for,if,else,elif,break,continue,yield,async,await,assert,print,type,enumerate,import,@},
+  morecomment=[l][\color{myblue}]{...},     % line continuation (...) like blue comment
+% 在左侧显示行号
+  numbers=left,
+  numberstyle=\tiny\color{myblue}, % 设定行号格式
+  firstnumber=1,
+  stepnumber=1
+}
+
+% --------------------------->
+% 无序脚注命令定义
+% --------------------------->
+\newcommand\footnotenoindex[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+
+% --------------------------------------------------------------->
+% 首页信息
+% --------------------------------------------------------------->
+\title{利用Python进行生信分析 | 基础 + 实战}
+\subtitle{—— Python for Bioinformatics}
+% \date{\today}
+% \date{2022-09-11}
+\date{2022一起加油}
+\author{赵华男}
+
+% \institute{清华大学}
+\titlegraphic{\hfill\includegraphics[height=3.5cm]{MyLogo.png}}
+% --------------------------------------------------------------->
+% 自我介绍
+% --------------------------------------------------------------->
+% --------------------------------------------------------------->
+% 正文
+% --------------------------------------------------------------->
+\begin{document}
+% 编译首页
+\maketitle
+
+% % --------------------------------------------------------------->
+% Slides Start
+% --------------------------------------------------------------->
+\section{第一节 \space 课程介绍}
+\input{Content/课程介绍/课程介绍.tex} % 10 min
+
+\section{第二节 \space 操作系统和编程语言} % 90 min
+\input{Content/操作系统和编程语言/Python简介.tex} % 10min
+\input{Content/操作系统和编程语言/三大系统.tex} % 30 min
+\input{Content/操作系统和编程语言/SHELL以及环境变量.tex} % 15min
+\input{Content/操作系统和编程语言/编译型语言与解释型语言.tex} %5min
+\input{Content/操作系统和编程语言/IDE介绍.tex} % 1min
+\input{Content/操作系统和编程语言/安装Python解释器.tex} % 10 min
+\input{Content/操作系统和编程语言/安装和配置conda环境.tex} % 10 min
+\input{Content/操作系统和编程语言/安装和配置JupyterLab.tex} % 10 min
+\begin{frame}[standout] Q \& A! \end{frame}
+\begin{frame}[standout] Thank you! \end{frame}
+
+\section{第三节 \space Python基础知识} % 90 min
+\input{Content/Python基础知识/HelloWorld.tex} %15min
+\input{Content/Python基础知识/变量与数据类型.tex}
+\input{Content/Python基础知识/运算符.tex}
+\input{Content/Python基础知识/流程控制.tex}
+\input{Content/Python基础知识/函数.tex}
+\input{Content/Python基础知识/IO操作.tex}
+\input{Content/Python基础知识/语法糖.tex}
+\begin{frame}[standout] Q \& A! \end{frame}
+\begin{frame}[standout] Thank you! \end{frame}
+
+\section{第四节 \space Python进阶知识}
+\input{Content/Python进阶知识/PyCharm的安装和配置.tex}
+\input{Content/Python进阶知识/模块与包.tex}
+\input{Content/Python进阶知识/异常处理.tex}
+\input{Content/Python进阶知识/面向对象编程.tex}
+\input{Content/Python进阶知识/继承和多态.tex}
+\input{Content/Python进阶知识/PEP8规范.tex}
+\input{Content/Python进阶知识/补充知识.tex}
+\begin{frame}[standout] Q \& A! \end{frame}
+\begin{frame}[standout] Thank you! \end{frame}
+
+
+\section{项目实战一 FASTA与FASTQ}
+\input{Content/项目实战一_FASTA与FASTQ/序列储存格式的介绍.tex}
+\input{Content/项目实战一_FASTA与FASTQ/FASTQ文件的操作.tex}
+\input{Content/项目实战一_FASTA与FASTQ/FASTA文件的操作.tex}
+\begin{frame}[standout] Q \& A! \end{frame}
+\begin{frame}[standout] Thank you! \end{frame}
+
+\section{项目实战三 基因注释文件处理}
+\input{Content/项目实战三 基因注释文件处理/基因注释与GTF和GFF文件的介绍.tex}
+\input{Content/项目实战三 基因注释文件处理/GTF和GFF文件操作.tex}
+\input{Content/项目实战三 基因注释文件处理/程序CLI化.tex}
+\begin{frame}[standout] Q \& A! \end{frame}
+\begin{frame}[standout] Thank you! \end{frame}
+
+\section{项目实战五 支持多核计算程序的编写}
+\input{Content/项目实战五 支持多核计算程序的编写/多进程与多线程.tex}
+\input{Content/项目实战五 支持多核计算程序的编写/计算给定区域的FPKM_RPKM_CPM信号_多核版.tex}
+\input{Content/项目实战五 支持多核计算程序的编写/多核程序的性能分析.tex}
+\input{Content/项目实战五 支持多核计算程序的编写/Python执行效率优化与学习资源分享.tex}
+\begin{frame}[standout] Q \& A! \end{frame}
+\begin{frame}[standout] Thank you! \end{frame}
+\end{document}
+

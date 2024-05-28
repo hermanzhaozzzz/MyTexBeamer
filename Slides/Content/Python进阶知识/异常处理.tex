@@ -1,0 +1,23 @@
+\subsection{异常处理}
+\begin{frame}[standout] 异常处理 \end{frame}
+\begin{frame}{异常处理}
+    \tiny{为了保持大型程序的健壮和稳定,python提供了非常重要的三个功能特性来处理python程序在运行中出现的异常和错误。你可以使用该功能来调试python程序。}
+
+    \begin{myoutline}
+        \1 异常处理
+            \2 try except的关键字
+                \3 try 后跟正常逻辑
+                \3 except 捕捉错误信息
+                \3 else 如果 except 中描述的错误没捕捉到,就会执行(可选)
+                \3 finally 不论是否捕捉到错误,注定执行(可选)
+            \2 import builtins; print(dir(builtins))
+                \3 官方文档
+                \3 https://www.runoob.com/python/python-exceptions.html
+        \1 触发异常
+            \2 raise函数: Python 允许程序自行引发异常，使用 raise 语句即可
+        \1 断言(Assertions)
+            \2 assert True     \# 条件为 true 正常执行
+            \2 assert False    \# 条件为 false 触发异常
+        \1 演示(以打开不存在的文件为例)
+    \end{myoutline}
+\end{frame}

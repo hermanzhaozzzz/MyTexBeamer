@@ -1,0 +1,129 @@
+\subsection{项目一 序列文件的处理}
+
+\begin{frame}[standout] 项目一 \quad 序列文件的处理 \end{frame}
+
+\begin{frame}[standout] 序列储存格式的介绍 \end{frame}
+\begin{frame}[fragile]{序列储存格式的介绍--FASTA 文件格式}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{myoutline}
+            \1 FASTA格式
+                \2 一种用于表示核苷酸序列或多肽序列的文本格式;其中碱基对或氨基酸用单个字母来表示
+                \2 允许在序列前添加序列名及注释
+                \2 该格式已成为生物信息学领域的一项标准
+            \1 FASTA文件各行记录信息如下:
+                \2 第一行
+                    \3 由大于号">"开头的任意文字说明，用于序列标记
+                    \3 为了保证后续分析软件能够区分每条序列，\textcolor{red}{单个序列的标识必须是唯一的}
+                \2 第二行
+                    \3 序列本身; 只允许使用既定的核苷酸或氨基酸编码符号。
+                    \3 通常核苷酸符号大小写均可, 而氨基酸常用大写字母。
+                    \3 注意有些程序对大小写有明确要求。一般每行60-80个字母。
+        \end{myoutline}
+        \column{0.45\textwidth}
+        \begin{lstlisting}
+>HWI-D00433:463:HNT7JBCXX:1:1101:19071:2193 1:N:0:TTCTCCAT
+CCTACGGGACGCATCAGTGAGGAATATTGGTCAATGGACGCGAGTCTGAACCAGCCAAGT
+AGCGTGAAGGATGAAGGCCCGATGGGTTGTAAACCTCTTTTATCTGGGAATAAAACGTGC
+CACGTGTGGTATTTTGTATGTACCATAAGAATAAGTATCGGCTAACTCCGTGCCAGCAGC
+CGCGGTAATACGGAGGATCCGAGCGTTATCCGGATTTATTGGGTTTAAAGGGTGCGCAGG
+CGGTCTGTTA
+>HWI-D00433:463:HNT7JBCXX:1:1101:1713:2316 1:N:0:TTCTCCAT
+CCTACGGGGTTCACCAGTAGGGAATCTTCCACAATGGGCGAAAGCCTGATTGAGCAAAGC
+CGCGTGTTTTAAGAAGGTCTTCGGATCGTAAAACCCTGTTGTTAGAGAAGAAAGTGCGTG
+CGCGTAACTGTTCACGTTTCTACTGTATCTAACAAGAAAGCACCGGCTAACTACGTTCCA
+        \end{lstlisting}
+    \end{columns}
+    \footnotenoindex{https://zhuanlan.zhihu.com/p/363971040}
+\end{frame}
+
+\begin{frame}[fragile]{序列储存格式的介绍--FASTA 文件格式}
+    \begin{lstlisting}
+# legend server
+cd /home/zhaohuanan/3.project/2022_Other_projects/2022-09-25_Prepared_data/FASTA
+rsync -avzP rsync://hgdownload.cse.ucsc.edu/goldenPath/mm39/chromosomes/ .
+# check一下md5
+md5sum -c md5sum.txt
+
+(base) PS C:\Users\vagrant\PythonForBioinformatics> rsync -avzP rsync://hgdownload.cse.
+ucsc.edu/goldenPath/mm39/chromosomes/chrM.fa.gz .
+receiving incremental file list
+chrM.fa.gz
+          5,385 100%    5.14MB/s    0:00:00 (xfr#1, to-chk=0/1)
+
+sent 43 bytes  received 5,492 bytes  299.19 bytes/sec
+total size is 5,385  speedup is 0.97
+
+# 接下来我们需要将genome生成一下,未确定的基因组区域暂不考虑,只看确定的基因组
+# 测试命令
+echo `seq 1 1 19` X Y M | awk 'BEGIN {printf "cat "}{for(i=1; i<=NF;i++){printf "chr"$i".fa.gz "}}'
+# 写入genome文件
+echo `seq 1 1 19` X Y M | awk 'BEGIN {printf "cat "}{for(i=1; i<=NF;i++){printf "chr"$i".fa.gz "}}' | \
+    sh > genome_ucsc_mm39.fa.gz
+zcat genome_ucsc_mm39.fa.gz | grep -v N | less # linux/window
+zcat < genome_ucsc_mm39.fa.gz | grep -v N | less # macos
+    \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{序列储存格式的介绍--FASTQ 文件格式}
+    \begin{myoutline}
+        \1 第一行
+            \2 以@开头
+            \2 后面是reads的ID以及其他信息
+            \2 例如下一页例中 HWUSI-EAS100R代表Illumina设备名称,
+            \2 6代表flowcell中的第六个lane,73代表第六个lane中的第73个tile
+            \2 941:1973代表该read在该tile中的x:y坐标信息;
+            \2 \#0, 若为多样本的混合作为输入样本,则该标志代表样本的编号,用来区分个样本中的reads/
+            \2 /1代表paired end中的前一个read。
+        \1 第二行
+            \2 read的序列
+            \2 紧接着下面两行代表该read的质量
+        \1 第三行
+            \2 以“+”开头,跟随着该read的名称(一般于@后面的内容相同)，但有时可以省略，但“+”一定不能省
+    \end{myoutline}
+    \footnotenoindex{https://baike.baidu.com/item/fastQ格式 (rmspace)}
+\end{frame}
+\begin{frame}[fragile]{序列储存格式的介绍--FASTQ 文件格式}
+    \begin{myoutline}
+        \1 第四行
+        \2 代表reads的质量。这一行可以详细说一下!
+        \2 Illumina测序仪是按照荧光信号来判断所测序的碱基是哪一种的,例如红黄蓝绿分别对应ATCG,那么一旦出现一个紫色的信号该怎么判断呢?
+        \2 因此对每个结果都有一个概率的问题。起初sanger中心用Phred quality score来衡量该read中每个碱基的质量,既-10lgP \#(lg意为log10)
+            \3 其中P代表该碱基被测序错误的概率
+            \3 如果该碱基测序出错的概率为0.001, 则Q应该为30,那么30+33=63,那么63对应的ASCii码为`?',则在第四行中该碱基对应的质量代表值即为`?'
+            \3 ASCII https://baike.baidu.com/item/ASCII
+    \end{myoutline}
+    \begin{lstlisting}
+@SEQ_ID
+GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTTT
++
+!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF
+
+# 例如在NCBI看到的FASTQ格式如下
+@HWUSI-EAS100R:6:73:941:1973#0/1
+GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTAAATCCATTTGTTCAACTCACAGTT
++HWUSI-EAS100R:6:73:941:1973#0/1
+!''*((((***+))%%%++)(%%%%).1***-+*''))**55CCF
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{序列储存格式的介绍--FASTQ 文件格式}
+    \begin{lstlisting}
+# from illumina
+@E00591:528:HHVW3CCX2:2:1101:17360:2170 1:N:0:GATCAGCG:ACTA
+TGGAGTGAGTACGGTGTGCGTTGAAGTCCTCGTTGTCTTGTTGGCAGGGGTCTGCACCCGGGAGCCCCCGTTCTATATCATCACTGAGATCATGACCTACGGGAACCTCCTCGACTACCTCAGGGAGTGCAACTGCAACGAG
++
+JJJJAFFFFJFJJJAFFJJJJFJFFJJFFFJF7A<FJ7JF-<F-7A7<JF7<FJJJ-F<JJJJFJJJJJJ<<AJFJAJJ<7AJFFFJ-<7AFFJJJA-<FF--7FJ-F7-7FA7F<FFJA-7FJJJJF<JF7F7A7-777<-
+# from mgi
+@Beta12AdemL1C001R00100000184/1
+GTGTCCGTATCTTCACCCCACCACAAACTATTAGCTTTAGAAAGGAAAAGAAAAACCACAACAAAACAGTGTGTGTGTACCAAAGACTTATATGTGCATAAGCAAAAGCAAACAATAGCATTAGCAGGAACTCGTGGACATTCCAGGGAA
++
+ICIDIIIDEDIDBIEIIIIEIIEIEEEID@DDE4IDDDEID>EIIEEEEIEEEEEIIEIEEIECEEIE4DIDIDDC6DEIIE@E6EI5CBDEDICIIECEEIIAEEEIIDEEIE:CD:IECABIIEI>E8ICI,CI9DIEDCIIE@>HEC
+# from sra
+@fig7_untreated_rep1.1 1 length=150
+TTACAAGACTGNTGTATTAGTTTATACTACAAGGACAGGCCCATTNGNNTNTNTTNTTTTNAANTAGGGANATAGTTGGTATTAGGATTAGNATTGTTGTGAAGTATAGTANGGATGCTACTTGNCCAATGATGGTAAAAGGGTAGCTTA
++fig7_untreated_rep1.1 1 length=150
+AFFFFFFFFFF#FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF/F#F##F#F#FF#FFFF#FF#FFFFFF#FFFFFFFFFFFFFFFFFFFA#FFFFFFFFFFFFFFFFFFF#FFFFFFFFFFFF#A/FFFF/FFFFFFF/FFFFFFFFFF
+    \end{lstlisting}
+\end{frame}

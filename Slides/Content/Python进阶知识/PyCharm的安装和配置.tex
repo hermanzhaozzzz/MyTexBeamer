@@ -1,0 +1,70 @@
+\subsection{PyCharm的安装和配置}
+\begin{frame}[standout] 第四节 \quad Python 进阶知识 \end{frame}
+\begin{frame}[standout] PyCharm的安装 \end{frame}
+\begin{frame}[fragile]{PyCharm的安装}
+    \begin{myoutline}
+        \1 官网 https://www.jetbrains.com/pycharm/
+    \end{myoutline}
+
+    \begin{lstlisting}
+# macos
+brew install --cask pycharm-ce  # 社区版
+brew install --cask pycharm  # 专业版
+# or 直接官网安装, 不再掩饰
+
+# windows / linux
+# 直接官网安装
+# 演示!
+    \end{lstlisting}
+    
+\end{frame}
+
+\begin{frame}[fragile]{PyCharm的配置(MacOS为例)}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{lstlisting}
+# ---------------------------------
+# set outer tools
+# Auto PEP8 # conda install autopep8 
+# ---------------------------------
+Name: AutoPep8
+Description: autopep8 your code
+Program: autopep8
+Arguments: --in-place --aggressive --aggressive $FilePath$
+Working directory: $ProjectFileDir$
+Output filters: $FILE_PATH$\:$LINE$\:$COLUMN$\:.*
+# ---------------------------------
+# plugins recommand
+# ---------------------------------
+# Key Promoter X
+# CodeGlance3
+# Json Parser
+# Rainbow Brackets
+# Rainbow CSV
+        \end{lstlisting}
+        \column{0.4\textwidth}
+        \begin{lstlisting}
+# ---------------------------------
+# 安装专业版并使用学生(教育)邮箱激活一年
+# ---------------------------------
+# 注册jetbrains账号
+# https://account.jetbrains.com/login
+# 使用学生或教师邮箱, 免费申请专业版
+# https://www.jetbrains.com/shop/eform/students/
+# 然后去邮箱里查看, 按照邮件提示操作即可
+# 成功后, 下载安装 PyCharm 专业版本, 
+# 选择help选项卡 -> registe plugins, 登录账号即可
+# ---------------------------------
+# 新建一个项目 Project 并运行测试文件
+# ---------------------------------
+# WSL整合进 PyCharm, 需要专业版
+# - 不再演示如何安装 WSL, 如何配置 WSL
+# - 查看左下角脚注链接的官方文档
+        \end{lstlisting}
+    \end{columns}
+    \footnotenoindex{http://www.zhaohuanan.cc/category/pycharm.html}
+    \footnotenoindex{https://learn.microsoft.com/zh-cn/windows/wsl/}
+    \footnotenoindex{https://www.jetbrains.com/help/pycharm/using-wsl-as-a-remote-interpreter.html\#configure-wsl}
+\end{frame}
+
+

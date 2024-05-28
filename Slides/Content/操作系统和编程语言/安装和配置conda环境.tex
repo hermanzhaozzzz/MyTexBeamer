@@ -1,0 +1,162 @@
+\subsection{安装和配置conda环境}
+\begin{frame}{Python的包管理工具}
+    \begin{myoutline}
+        \1 pip
+            \2 查询包
+            \2 安装包
+            \2 卸载包
+            \2 一定程度的自动配置环境依赖功能
+        \1 venv
+            \2 创建 Python 的虚拟环境
+            \2 其余功能类似 pip
+        \1 conda
+            \2 查询、安装、卸载Python包
+            \2 创建、切换、管理Python运行环境
+            \2 命令行工具安装（生信、数据科学必会工具）
+            \2 强大的自动配置环境依赖功能
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{Conda简介}
+    \begin{columns}
+        \column{0.3\textwidth}
+        \begin{myoutline}
+            \1 Conda是一款环境管理工具
+                \2 最流行的 Python 环境管理工具之一
+                \2 开源的\textcolor{red}{软件包管理系统}和\textcolor{blue}{环境管理系统},
+                    \3 用于安装多个版本的软件包及其依赖关系, 并在不同环境间切换
+                    \3 Conda 是为 Python 程序创建的, 也可以打包和分发其他软件
+                \2 Linux, MacOS 和Windows跨平台
+            \1 Conda
+                \2 Anaconda
+                \2 Miniconda
+        \end{myoutline}
+        \column{0.7\textwidth}
+        \begin{figure}
+            \begin{flushright}
+                \includegraphics[width=0.5\linewidth]{Images/conda.jpg}
+
+                \includegraphics[width=0.9\linewidth]{Images/conda-vs-miniconda-vs-anaconda.png}
+            \end{flushright}
+        \end{figure}
+    \end{columns}
+    \footnotenoindex{https://www.zhihu.com/question/369468216/answer/997004544}
+\end{frame}
+% \2 miniconda windows 64位安装包大小约为55 Mb, 只包含了conda、python、和一些必备的软件工具
+% \2 anaconda windows 64位安装包大小为470 Mb, 是miniconda的扩展, 包含了数据科学和机器学习要用到的很多软件
+
+
+\begin{frame}[standout]{安装和配置conda环境}
+    下载: tuna → conda → 清华大学 tuna 镜像站 → 搜索 conda → 选择 anaconda → 选择 miniconda → 选择``latest''版本!
+    \begin{myoutline}
+        \1 Windows
+        \1 MacOS
+        \1 Linux
+        \1 用法
+            \2 conda init 初始化 Shell 环境
+            \2 创建一个指定 Python 版本的Conda环境
+            \2 切换不同 Python 版本的Conda环境
+            \2 对不同Conda环境安装不同版本的 Python 包
+            \2 对一个Conda环境安装其他软件
+    \end{myoutline}
+    \footnotenoindex{https://conda.io/projects/conda/en/latest/user-guide/install/index.html}
+    \footnotenoindex{https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/}
+    \footnotenoindex{https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/}
+\end{frame}
+
+\begin{frame}[standout]安装和配置conda环境--Windows\end{frame}
+\begin{frame}[standout]安装和配置conda环境--MacOS\end{frame}
+\begin{frame}[standout]安装和配置conda环境--Linux\end{frame}
+
+% Windows
+% 选为所有人安装
+% 加入环境变量!!!一定要选
+% 注册 anaconda 为系统 Python!!
+% install, next, finish
+% myPC 属性 about 高级系统设置 环境变量
+
+
+
+\begin{frame}[fragile]{Conda源--以MacOS 为例}
+    \begin{columns}
+        \column{0.82\textwidth}
+        \begin{lstlisting}
+# 清除之前残留的conda channels
+rm -rf ~/.condarc
+# 按顺序依次添加channel, 尽可能使用官方源
+# 其他源常常在同步库的时候发生
+# md5 值校验错误装不上包的问题!!!!
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda config --add channels r
+# 备用, 清华源
+# https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
+# https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+#设置搜索是显示通道地址
+conda config --set show_channel_urls yes
+#查看当前conda配置
+conda config --show channels
+conda config --get channels
+        \end{lstlisting}
+        \column{0.12\textwidth}
+        \begin{lstlisting}
+cat ~/.condarc
+# return
+channels:
+    - r
+    - bioconda
+    - conda-forge
+    - microsoft
+    - defaults
+        \end{lstlisting}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]{pip源}
+    \begin{lstlisting}
+# PyPI 镜像在每次同步成功后间隔 5 分钟同步一次。
+# 临时使用, 注意，simple 不能少, 是 https 而不是 http
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+
+# 设为默认
+# 升级 pip 到最新的版本 (>=10.0.0) 后进行配置：
+python -m pip install --upgrade pip
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+# 如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：
+python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+    \end{lstlisting}
+    \footnotenoindex{https://mirrors.tuna.tsinghua.edu.cn/anaconda/}
+\end{frame}
+
+
+\begin{frame}[fragile]{Conda, Pip的扩展用例}
+    \begin{lstlisting}
+# install mamba
+conda install -c conda-forge mamba
+mamba update -n base -c defaults conda
+mamba install pandas
+# conda 导出环境/导入环境
+## 导出当前环境：
+conda env export > requirements_conda.yml
+## 导入环境：
+conda env create -f requirements_conda.yml
+## 备注：一些找不到的小组件直接删掉后再安装
+# 滚回某个环境
+conda list --revisions
+conda install --revision=n
+# 删除某环境
+conda env remove -n learn
+
+# pip 导出环境/导入环境
+## 导出当前环境：
+pip freeze > requirements.txt
+## 导入环境：
+pip install -r requirements.txt
+    \end{lstlisting}
+\end{frame}

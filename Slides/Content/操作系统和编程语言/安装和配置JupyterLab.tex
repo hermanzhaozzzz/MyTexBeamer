@@ -1,0 +1,115 @@
+\subsection{安装和配置JupyterLab环境}
+
+\begin{frame}[standout]{安装和配置JupyterLab环境}
+    \begin{myoutline}
+        \1 使用Conda 安装和配置JupyterLab
+            \2 
+        \1 JupyterLab 基本用法
+            \2 ipynb
+            \2 terminal
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}[standout]install JupyterLab--Windows\end{frame}
+
+\begin{frame}[fragile]{install JupyterLab}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \begin{lstlisting}
+conda install jupyterlab nodejs # nodejs > 12.14
+pip install jupyterlab_theme_hale # theme
+jupyter-lab --no-browser --port 8888 # run
+# 启用extension manager
+
+# func: Settings Editor Form UI
+# setting:
+{
+    "settingEditorType": "json"
+}
+# func: File Browser
+# setting: 
+{
+    "navigateToCurrentDirectory": true,
+    "useFuzzyFilter": true,
+    "showLastModifiedColumn": true,
+    "showHiddenFiles": true,
+}
+        \end{lstlisting}
+        \column{0.45\textwidth}
+        \begin{lstlisting}
+# func: Text Editor
+# setting:
+{
+    "editorConfig": {
+        "autoClosingBrackets": true, // 补全括号
+        "codeFolding": true, // 代码折叠
+        "cursorBlinkRate": 530,
+        "fontFamily": null,
+        "fontSize": null,
+        "insertSpaces": true,
+        "lineHeight": null,
+        "lineNumbers": true,
+        "lineWrap": "on",
+        "matchBrackets": true,
+        "readOnly": false,
+        "tabSize": 4,
+        "rulers": [],
+        "showTrailingSpace": false,
+        "wordWrapColumn": 80
+    }
+}
+        \end{lstlisting}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[standout]install JupyterLab--MacOS\end{frame}
+
+\begin{frame}{已经整合的优秀插件}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.99\linewidth]{Images/jupyterlabextension.jpg}
+    \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{自动补全插件}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \begin{lstlisting}
+pip install jupyterlab-lsp
+pip install python-lsp-server pyright
+conda install r-languageserver # 如果需要用 R
+
+
+# func: Code Syntax 
+# 启用或者关闭 lsp 自动补全
+# true 为关闭，false 为开启
+# setting:
+{
+    "disable": false,
+}
+        \end{lstlisting}
+        \column{0.45\textwidth}
+        \begin{lstlisting}
+# func: Language Server
+# setting:
+{
+    "language_servers": {
+    "pyls": {
+        "serverSettings": {
+        "pyls.plugins.pydocstyle.enabled": true,
+        "pyls.plugins.pyflakes.enabled": false,
+        "pyls.plugins.flake8.enabled": true
+        }
+    },
+    # 如果需要用 R
+    "r-languageserver": {
+        "serverSettings": {
+        "r.lsp.debug": false,
+        "r.lsp.diagnostics": false
+        }
+    }
+    }
+}
+        \end{lstlisting}
+    \end{columns}
+\end{frame}

@@ -1,0 +1,58 @@
+\subsection{安装Python解释器}
+
+\begin{frame}{Python的``解释器''}
+    \begin{myoutline}
+        \1 Python解释器(Interpreter)
+            \2 解释执行Python源代码
+            \2 官方版本的Python解释器是由 C 语言开发的(CPython)
+            \2 其他版本的 Python 解释器:
+                \3 IPython
+                \3 PyPy
+                \3 Jython 
+                \3 IronPython 
+        \1 当我们说, “安装Python”, 意思是安装Python的解释器
+            \2 默认情况我们认为是安装官方版本的 CPython 解释器
+            \2 默认我们使用的也是 CPython 
+            \2 IPython 以及 Jupyter Notebook/Lab 是基于 IPython 的
+        \1 IDE
+            \2 PyCharm、VS Code、Spyder、Jupyter-lab
+                \3 编写Python代码的工具
+                \3 整合了Python解释器
+                \3 代码提示功能
+                \3 减轻工作量
+    \end{myoutline}
+\end{frame}
+% CPython从名字就可以看出，CPython是由C语言开发的Python解释器，官方版本的Python解释器，也被称为标准的Python解释器，也是使用最为广泛的Python解释器。
+% 当从Python官网下载并安装好Python之后，就直接获得了官方版本的Python解释器：CPython。
+% 在cmd命令行下运行Python程序也是启动CPython解释器，而且CPython用>>>作为提示符。
+% IPythonIPython是基于CPython的一个交互式的Python解释器。
+% 简单理解，IPython和CPython在执行Python程序的功能上是一样的，但是IPython在交互方式上相比于CPython有增强。
+% 而且IPython用In [序号]:作为提示符，这一点于CPython也有所不同。
+% Anaconda中的Jupyter Notebook使用的就是IPython。
+% PyPy是用Python实现的Python解释器，提供了JIT编译器和沙盒功能，能够对Python程序进行动态编译，
+% 注意不是解释而是动态编译，在运行速度上比CPython快，显著提高了Python程序的执行速度。
+% PyPy比CPython更加灵活，更易于使用和试验。
+% 大部分Python程序都可以在PyPy上运行，但是由于PyPy和CPython的不同，可能会导致同一段Python程序在两种解释器下的运行结果会不同。
+% 因此，如果想要在PyPy上运行Python程序，要先了解一下PyPy和CPython的不同。
+% 而且PyPy对于Python第三方模块的支持还有不足。
+% Jython，最初叫做JPython，由Java语言编写，是可以运行在Java平台上的Python解释器。
+% Jython可以把Python程序编译成Java字节码来执行。
+% JPython可以很好地与JVM集成，例如，使用JVM的垃圾回收和JIT，直接导入并调用JVM上其他语言编写的库和函数。
+% IronPythonIronPython与Jython的作者都是 Jim Hugunin，与Jython类似，不同的是IronPython是运行在微软.Net平台上的Python解释，
+% 可以把Python程序编译成.Net字节码来执行。
+% 因此，IronPython能够很好地与.Net平台集成。
+
+\begin{frame}[standout]{安装官方的Python解释器}
+    \hyperlinkframeendprev{https://www.python.org/}
+    \begin{myoutline}
+        \1 Windows
+        \1 MacOS
+        \1 Linux
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}[standout]安装官方的Python解释器--Windows\end{frame}
+\begin{frame}[standout]安装官方的Python解释器--Linux\end{frame}
+\begin{frame}[standout]安装官方的Python解释器--MacOS\end{frame}
+
+

@@ -1,0 +1,74 @@
+\subsection{补充知识}
+\begin{frame}[standout] 补充知识 \end{frame}
+\begin{frame}{补充知识}
+    \begin{myoutline}
+        \1 下划线的 6 个作用
+            \2 用在 Python 解释器，表示上一次的执行结果
+            \2 代码中一个独立的下划线，表示这个变量不重要
+            \2 类的内部，双下划线作为变量名或函数名的开头，表示私有
+            \2 双下划线开头和结尾的方法，是魔术方法
+                \3 比如常见的 `\_\_init\_\_', `\_\_dict\_\_', `\_\_dir\_\_', `\_\_doc\_\_', `\_\_eq\_\_' 等等
+            \2 作为变量名中间的一部分
+            \2 作为数字中间的一部分，更易读
+    \end{myoutline}
+\end{frame}
+\begin{frame}{补充知识}
+    \begin{myoutline}
+        \1 Jupyterlab扔后台?conda/brew/apt install tmux
+        \1 使用服务器的Jupyterlab
+        \1 服务器(没有root权限)上安装的jupyterlab 后 自动加载的网页里不能显示notebook是啥(IP原因)
+    \end{myoutline}
+\end{frame}
+\begin{frame}[fragile]{补充知识}
+    \begin{myoutline}
+        \1 Windows 配置 scoop 及 scoop 安装软件和命令
+            \2 直接演示
+    \end{myoutline}
+    \begin{lstlisting}
+# 进入powershell
+set-alias ll  # ls
+# 步骤 1:在 PowerShell 中打开远程权限
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser;
+cd ~
+# 步骤 2: 自定义 Scoop 安装目录
+# 如果跳过该步骤， Scoop 将默认把所有用户安装的 App 和 Scoop 
+# 本身置于C:\Users\user_name\scoop
+# C:\Users\vagrant
+mkdir scoop
+$env:SCOOP='C:\Users\vagrant\scoop'
+[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
+
+# 步骤 3:下载并安装 Scoop
+iwr -useb https://gitee.com/glsnames/scoop-installer/raw/master/bin/install.ps1 | iex
+scoop config SCOOP_REPO 'https://gitee.com/glsnames/scoop-installer'  # 设置镜像(如果软件安装失败的话)
+scoop install git  # 必须的依赖项
+    \end{lstlisting}
+
+\end{frame}
+\begin{frame}[fragile]{补充知识}
+    \begin{lstlisting}
+# step1: 添加官方维护的extras库(含大量GUI程序)
+# 国内源 scoop bucket add extras https://gitee.com/scoop-bucket/extras.git
+scoop bucket add extras
+# step2 更新源
+scoop update
+# step3 安装 App和命令行工具(必装工具, conda装好可以不再装了)
+scoop install git
+scoop install miniconda3  # 安装全完全卸载原来安装的 miniconda!
+scoop install sudo  # 调用管理员权限
+scooop install tldr  # too long dont read!
+# (类 unix 完美,windows 能用但信息提供的是类 unix 的,对 windows 不一定能够完全适用)
+# 类unix 可以conda install tldr
+scoop install busybox  # 项目实战一会用到! zcat命令的依赖
+scoop install cwrsync  # 项目实战一会用到!
+scoop install windows-terminal
+scoop install powertoys
+
+
+# 管理:
+scoop list  # 查看已安装程序
+scoop status  # 查看更新
+scoop cleanup  # 删除旧版本
+scoop checkup  # 自身诊断
+    \end{lstlisting}
+\end{frame}

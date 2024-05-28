@@ -1,0 +1,77 @@
+\subsection{变量与数据类型}
+
+\begin{frame}{变量与数据类型}
+    变量: 变量是存放数据值的容器
+    \begin{myoutline}
+        \1 与其他编程语言不同, Python 没有声明变量的命令
+        \1 首次为其赋值时，才会创建变量
+        \1 变量不需要使用任何特定类型声明，甚至可以在设置后更改其类型
+        \1 字符串变量可以使用单引号,双引号, 三引号进行声明
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{Python 变量命名规则}
+    \begin{myoutline}
+        \1 只能包含字母数字字符和下划线(A-z、0-9 和 \_)
+        \1 必须以字母或下划线字符开头,不能以数字开头
+        \1 变量名称区分大小写(age、Age 和 AGE 是三个不同的变量)
+        \1 如果使用\textcolor{red}{关键字}作为变量名?
+        \1 Jupyterlab演示
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{Python 变量赋值规则}
+    \begin{myoutline}
+        \1 常规赋值
+        \1 向多个变量赋值 （相同值）
+        \1 向多个变量赋值 （不同值）, 解包(了解)
+        \1 问题：如何将两个变量的值互换？
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{Python 变量的打印}
+    \begin{myoutline}
+        \1 打印一个变量
+        \1 打印多个变量
+        \1 将变量连接到字符串后，进行打印
+            \2 有关于字符串和变量连接的内容，我们到字符串再讲
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{Python 内置数据类型1}
+    \begin{myoutline}
+        \1 字符串: str
+            \2 常规字符串, raw 字符串, 三引号(单,双三引号)
+            \2 常用方法: find, count, replace, startswith, endswith, upper, lower, split, join, strip
+            \2 练习: 将 RNA 序列整理为大写,并替换为 DNA 序列?
+            \2 切片(左闭右开): 常规, 步长, 反向
+            \2 格式化字符串: \%, fstring, format方法
+        \1 二进制: bytes
+        \1 数值型: 
+            \2 int
+            \2 float
+            \2 complex
+        \1 序列：
+            \2 list: []新建列表,list函数,切片,更改元素,常用方法(append, remove, pop)
+            \2 tuple: (a,)新建元组,tuple函数,切片,元素不可更改
+            \2 range对象: 功能, 转 list,转 tuple, 直接遍历, type
+            \2 字符串
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{Python 内置数据类型2}
+    \begin{myoutline}
+        \1 集合: set: 
+            \2 \{\}新建集合, set 函数, 常用方法(add, update, remove , discard)
+        \1 字典: dict: 
+            \2{key: value}新建字典, dict 函数,访问键值对, 更改键值对中的值, 添加新的键值对, pop 方法弹出值, popitem方法弹出键值对
+        \1 布尔型: bool: 
+            \2 定义,bool 函数
+            \2 大多数值都为 True
+                \3 如果有某种内容，则几乎所有值都将评估为 True
+                \3 除空字符串外，任何字符串均为 True
+                \3 除 0 外，任何数字均为 True
+                \3 除空列表, 空元组外，任何列表、元组、集合和字典均为 True
+                \3 对象为 True 或 False 的本质?($\_\_len\_\_$)方法返回 0 或 False, 则 bool 函数将其返回为 False
+    \end{myoutline}
+\end{frame}

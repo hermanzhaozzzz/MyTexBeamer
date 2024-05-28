@@ -1,0 +1,147 @@
+\subsection{FASTA文件的操作}
+\begin{frame}[standout] FASTA文件的操作 \end{frame}
+\begin{frame}{FASTA文件的操作}
+    \begin{myoutline}
+        \1 FASTA文件的操作
+             \2 读取FASTA文件，并将其中U替换成T
+             \2 读取FASTA文件，并输出反向互补序列
+             \2 计算基因组序列的长度
+             \2 计算基因组各染色体的平均GC含量
+             \2 计算基因组中N的总长度（effective length）
+    \end{myoutline}
+\end{frame}
+
+% 3. FASTA 文件的操作与计算9月24日 10:00-11:00|未开始
+
+\begin{frame}[fragile]{Docstring-reST}
+    % https://queirozf.com/entries/python-docstrings-reference-examples
+    \tiny
+    \begin{lstlisting}
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    :param int arg1: Description of arg1.
+    :param str arg2: Description of arg2.
+    :raise: ValueError if arg1 is equal to arg2
+    :return: Description of return value
+    :rtype: bool
+
+    :example:
+
+    >>> a=1
+    >>> b=2
+    >>> func(a,b)
+    True
+    """
+
+    if arg1 == arg2:
+        raise ValueError('arg1 must not be equal to arg2')
+
+    return True
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Docstring-Google Style}
+    \tiny
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{lstlisting}
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    Args:
+        arg1 (int): Description of arg1
+        arg2 (str): Description of arg2
+
+    Returns:
+        bool: Description of return value
+
+    Raises:
+        AttributeError: The ``Raises`` section is a list of all 
+            exceptions that are relevant to the interface.
+        ValueError: If `arg2` is equal to `arg1`.
+
+    Examples:
+        Examples should be written in doctest format, and should
+            illustrate how to use the function.
+        >>> a=1
+        >>> b=2
+        >>> func(a,b)
+        True
+    """
+            \end{lstlisting}
+            \column{0.4\textwidth}
+            \begin{lstlisting}
+    if arg1 == arg2:
+        raise ValueError(
+            'arg1 must not be equal to arg2'
+        )
+
+    return True
+            \end{lstlisting}
+    \end{columns}
+
+\end{frame}
+\begin{frame}[fragile]{Docstring-Numpy Style}
+    \tiny
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{lstlisting}
+def func(arg1, arg2):
+    """Summary line.
+
+    Extended description of function.
+
+    Parameters
+    ----------
+    arg1 : int
+        Description of arg1
+    arg2 : str
+        Description of arg2
+
+    Returns
+    -------
+    bool
+        Description of return value
+
+    Raises
+    ------
+    AttributeError
+        The ``Raises`` section is a list of all exceptions
+        that are relevant to the interface.
+    """
+            \end{lstlisting}
+            \column{0.4\textwidth}
+            \begin{lstlisting}
+    """
+    ValueError
+        If `arg2` is equal to `arg1`.
+
+    See Also
+    --------
+    otherfunc: some other related function
+
+    Examples
+    --------
+    These are written in doctest format, and should illustrate how to
+    use the function.
+
+    >>> a=1
+    >>> b=2
+    >>> func(a,b)
+    True
+    """
+
+    if arg1 == arg2:
+        raise ValueError(
+            'arg1 must not be equal to arg2'
+        )
+    return True
+            \end{lstlisting}
+    \end{columns}
+
+\end{frame}

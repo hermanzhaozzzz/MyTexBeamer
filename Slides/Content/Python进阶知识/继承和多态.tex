@@ -1,0 +1,63 @@
+\subsection{继承和多态}
+\begin{frame}[standout] 继承和多态 \end{frame}
+\begin{frame}[fragile]{把大象装进冰箱!--OOP,伪代码}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{lstlisting}
+class Box():
+    """盒子类，实现了开门、关门方法"""
+
+    def open_door(self):
+        pass
+
+    def close_door(self):
+        pass
+
+class IceBox(Box):
+    """冰箱"""
+
+    def ice(self):
+        """制冷"""
+        pass
+
+class WaterBox(Box):
+    """洗衣机"""
+    
+    def add_water(self):
+        """加水"""
+            pass
+        \end{lstlisting}
+        \column{0.5\textwidth}
+        \begin{lstlisting}
+    def sub_water(self):
+        """排水"""
+        pass   
+
+    def wash(self):
+        """洗涤"""
+        pass
+
+a = "大象"
+ice_box = IceBox()   # 冰箱对象
+ice_box.open_door()  # 通知冰箱开门
+push(a)   # 推大象进入
+ice_box.close_door()  # 通知冰箱关门
+
+
+# 那我想关老虎呢？
+b = "老虎"
+ice_box.open_door()  # 通知冰箱开门
+push(b)   # 推老虎进入
+ice_box.close_door()  # 通知冰箱关门
+            \end{lstlisting}
+    \end{columns}
+\end{frame}
+% \2 方法重写
+% \2 继承: 即一个派生类(derived class)继承基类(base class)的字段和方法。
+% 继承也允许把一个派生类的对象作为一个基类对象对待。例如, 有这样一个设计: 一个Dog类型的对象派生自Animal类
+
+% \1 继承: 即一个派生类(derived class)继承基类(base class)的字段和方法。
+% \2 继承也允许把一个派生类的对象作为一个基类对象对待。
+%     \3 例如, 有这样一个设计: 一个Animal类型的对象派生自Life类
+
+% 多态

@@ -1,0 +1,566 @@
+\subsection{面向对象编程}
+\begin{frame}[standout] 面向对象编程 \end{frame}
+
+\begin{frame}[fragile]{把大象装进冰箱!--函数式编程的问题}
+    \begin{lstlisting}
+# 把大象装进冰箱!!
+a = "大象"
+open_ice_door()  # 开冰箱门，需要自己实现开冰箱门的函数
+push(a)   # 推大象进入
+close_ice_door()  # 关冰箱门，需要自己实现关冰箱门的函数
+    \end{lstlisting}
+    \footnotenoindex{https://zhuanlan.zhihu.com/p/437925568}
+\end{frame}
+
+\begin{frame}[fragile]{把大象装进冰箱!--函数式编程的问题}
+    \begin{lstlisting}
+# 把大象装进冰箱!!
+a = "大象"
+open_ice_door()  # 开冰箱门，需要自己实现开冰箱门的函数
+push(a)   # 推大象进入
+close_ice_door()  # 关冰箱门，需要自己实现关冰箱门的函数
+
+# 那如果是把大象装进洗衣机呢？
+
+a = "大象"
+open_washer _door()  # 开洗衣机门，需要自己实现开洗衣机门的函数
+push(a)   # 推大象进入
+close_washer_door()  # 关洗衣机门，需要自己实现关洗衣机门的函数
+    \end{lstlisting}
+    \footnotenoindex{https://zhuanlan.zhihu.com/p/437925568}
+\end{frame}
+
+\begin{frame}[fragile]{把大象装进冰箱!--函数式编程的问题}
+    \begin{lstlisting}
+# 把大象装进冰箱!!
+a = "大象"
+open_ice_door()  # 开冰箱门，需要自己实现开冰箱门的函数
+push(a)   # 推大象进入
+close_ice_door()  # 关冰箱门，需要自己实现关冰箱门的函数
+
+# 那如果是把大象装进洗衣机呢？
+
+a = "大象"
+open_washer _door()  # 开洗衣机门，需要自己实现开洗衣机门的函数
+push(a)   # 推大象进入
+close_washer_door()  # 关洗衣机门，需要自己实现关洗衣机门的函数
+
+# 那如果是把大象装进铁笼呢？
+
+a = "大象"
+open_hot_door()  # 开铁笼门，需要自己实现开铁笼门的函数
+push(a)   # 推大象进入
+close_hot_door()  # 关铁笼门，需要自己实现关铁笼门的函数
+    \end{lstlisting}
+    \footnotenoindex{https://zhuanlan.zhihu.com/p/437925568}
+\end{frame}
+
+\begin{frame}{万物皆对象}
+    \tiny{
+        R 是一个函数式编程的语言 (大象装进冰箱的弊端!)
+
+        Java 完全面向对象
+
+        Python 既可以以函数式编程方式写程序, 也可以以面向对象编程方式写程序!
+
+        如果你以前没有接触过面向对象的编程语言, 那你可能需要先了解一些面向对象语言的一些基本特征, 在头脑里头形成一个基本的面向对象的概念, 这样有助于你更容易的学习Python的面向对象编程。
+    
+        接下来我们先来简单的了解下面向对象的一些基本特征。
+
+        \begin{myoutline}
+            \1 对象?
+                \2 几只胳膊 (属性, 名词)
+                \2 几条腿 (属性, 名词)
+                \2 打人, 吃饭 (方法, 动词)
+            \1 大象装进?里面(冰箱, 洗机器,铁笼)
+                \2 对象都是容器(属性)
+                \2 对象都有 open\_door(方法)
+                \2 对象都有 close\_door(方法)
+                \2 对象都有 push(方法)
+        \end{myoutline}
+    }
+\end{frame}
+
+\begin{frame}{面向对象编程思想}
+    \small
+    \begin{myoutline}
+        \1 类(Class):
+            \2 用来描述具有相同的\textcolor{red}{属性}和\textcolor{blue}{方法}的\textcolor{green}{对象}的\textcolor{pink}{集合}
+                    \3 \textcolor{green}{A, G, C, T}这四个碱基(对象)都属于\textcolor{pink}{碱基}这个集合(类), 都具有\textcolor{red}{分子量}属性和\textcolor{blue}{互补配对}方法
+                    \3 \textcolor{green}{狗,小猫}这两种动物(对象)都属于\textcolor{pink}{动物}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{南方人,  北方人}两种人(对象)都属于\textcolor{pink}{中国人}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{动物, 人}两种生命体(对象)都属于\textcolor{pink}{生命}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+            \2 它定义了该集合中每个对象所共有的\textcolor{red}{属性}和\textcolor{blue}{方法}
+        \1 对象：对象是类的实例; 创建对象的过程叫做\textbf{实例化}
+            \2 对象包括两个数据成员(\textcolor{red}{属性})（\textcolor{gray}{类变量}和\textcolor{red}{实例变量}）和\textcolor{blue}{方法}
+        \1 \textcolor{red}{属性}
+            \2 \textcolor{gray}{类变量}：类变量在整个实例化的对象中是公用的
+                \3 类变量定义在\textbf{类中且在函数体之外}
+                \3 类变量通常不作为实例变量(或者说不作为属性)使用, 只为类的属性和方法的实现服务
+            \2 \textcolor{red}{实例变量}：在类的声明中，\textcolor{red}{属性}是用变量来表示的
+                \3 这种变量就称为实例变量(\textcolor{red}{属性})，是\textcolor{red}{在类声明的内部但是在类的其他成员方法之外}声明的
+        \1 \textcolor{blue}{方法}：类中定义的函数
+            \2 方法重写 (继承和多态)
+            \2 局部变量：\textcolor{red}{定义在方法中的变量}，只作用于当前实例的类
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{面向对象编程思想}
+    \small
+    \begin{myoutline}
+        \1 类(Class):
+            \2 用来描述具有相同的\textcolor{red}{属性}和\textcolor{blue}{方法}的\textcolor{green}{对象}的\textcolor{pink}{集合}
+                    \3 \textcolor{green}{A, G, C, T}这四个碱基(对象)都属于\textcolor{pink}{碱基}这个集合(类), 都具有\textcolor{red}{分子量}属性和\textcolor{blue}{互补配对}方法
+                    \3 \textcolor{green}{狗,小猫}这两种动物(对象)都属于\textcolor{pink}{动物}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{南方人,  北方人}两种人(对象)都属于\textcolor{pink}{中国人}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{动物, 人}两种生命体(对象)都属于\textcolor{pink}{生命}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+            \2 它定义了该集合中每个对象所共有的\textcolor{red}{属性}和\textcolor{blue}{方法}
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{面向对象编程思想}
+    \small
+    \begin{myoutline}
+        \1 类(Class):
+            \2 用来描述具有相同的\textcolor{red}{属性}和\textcolor{blue}{方法}的\textcolor{green}{对象}的\textcolor{pink}{集合}
+                    \3 \textcolor{green}{A, G, C, T}这四个碱基(对象)都属于\textcolor{pink}{碱基}这个集合(类), 都具有\textcolor{red}{分子量}属性和\textcolor{blue}{互补配对}方法
+                    \3 \textcolor{green}{狗,小猫}这两种动物(对象)都属于\textcolor{pink}{动物}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{南方人,  北方人}两种人(对象)都属于\textcolor{pink}{中国人}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{动物, 人}两种生命体(对象)都属于\textcolor{pink}{生命}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+            \2 它定义了该集合中每个对象所共有的\textcolor{red}{属性}和\textcolor{blue}{方法}
+        \1 对象：对象是类的实例; 创建对象的过程叫做\textbf{实例化}
+            \2 对象包括两个数据成员(\textcolor{red}{属性})（\textcolor{gray}{类变量}和\textcolor{red}{实例变量}）和\textcolor{blue}{方法}
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{面向对象编程思想}
+    \small
+    \begin{myoutline}
+        \1 类(Class):
+            \2 用来描述具有相同的\textcolor{red}{属性}和\textcolor{blue}{方法}的\textcolor{green}{对象}的\textcolor{pink}{集合}
+                    \3 \textcolor{green}{A, G, C, T}这四个碱基(对象)都属于\textcolor{pink}{碱基}这个集合(类), 都具有\textcolor{red}{分子量}属性和\textcolor{blue}{互补配对}方法
+                    \3 \textcolor{green}{狗,小猫}这两种动物(对象)都属于\textcolor{pink}{动物}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{南方人,  北方人}两种人(对象)都属于\textcolor{pink}{中国人}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{动物, 人}两种生命体(对象)都属于\textcolor{pink}{生命}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+            \2 它定义了该集合中每个对象所共有的\textcolor{red}{属性}和\textcolor{blue}{方法}
+        \1 对象：对象是类的实例; 创建对象的过程叫做\textbf{实例化}
+            \2 对象包括两个数据成员(\textcolor{red}{属性})（\textcolor{gray}{类变量}和\textcolor{red}{实例变量}）和\textcolor{blue}{方法}
+        \1 \textcolor{red}{属性}
+            \2 \textcolor{gray}{类变量}：类变量在整个实例化的对象中是公用的
+                \3 类变量定义在\textbf{类中且在函数体之外}
+                \3 类变量通常不作为实例变量(或者说不作为属性)使用, 只为类的属性和方法的实现服务
+            \2 \textcolor{red}{实例变量}：在类的声明中，\textcolor{red}{属性}是用变量来表示的
+                \3 这种变量就称为实例变量(\textcolor{red}{属性})，是\textcolor{red}{在类声明的内部但是在类的其他成员方法之外}声明的
+    \end{myoutline}
+\end{frame}
+\begin{frame}{面向对象编程思想}
+    \small
+    \begin{myoutline}
+        \1 类(Class):
+            \2 用来描述具有相同的\textcolor{red}{属性}和\textcolor{blue}{方法}的\textcolor{green}{对象}的\textcolor{pink}{集合}
+                    \3 \textcolor{green}{A, G, C, T}这四个碱基(对象)都属于\textcolor{pink}{碱基}这个集合(类), 都具有\textcolor{red}{分子量}属性和\textcolor{blue}{互补配对}方法
+                    \3 \textcolor{green}{狗,小猫}这两种动物(对象)都属于\textcolor{pink}{动物}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{南方人,  北方人}两种人(对象)都属于\textcolor{pink}{中国人}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+                    \3 \textcolor{green}{动物, 人}两种生命体(对象)都属于\textcolor{pink}{生命}这个集合(类), 都具有\textcolor{red}{身高, 体重}属性和\textcolor{blue}{吃饭,睡觉}方法
+            \2 它定义了该集合中每个对象所共有的\textcolor{red}{属性}和\textcolor{blue}{方法}
+        \1 对象：对象是类的实例; 创建对象的过程叫做\textbf{实例化}
+            \2 对象包括两个数据成员(\textcolor{red}{属性})（\textcolor{gray}{类变量}和\textcolor{red}{实例变量}）和\textcolor{blue}{方法}
+        \1 \textcolor{red}{属性}
+            \2 \textcolor{gray}{类变量}：类变量在整个实例化的对象中是公用的
+                \3 类变量定义在\textbf{类中且在函数体之外}
+                \3 类变量通常不作为实例变量(或者说不作为属性)使用, 只为类的属性和方法的实现服务
+            \2 \textcolor{red}{实例变量}：在类的声明中，\textcolor{red}{属性}是用变量来表示的
+                \3 这种变量就称为实例变量(\textcolor{red}{属性})，是\textcolor{red}{在类声明的内部但是在类的其他成员方法之外}声明的
+        \1 \textcolor{blue}{方法}：类中定义的函数
+            \2 方法重写 (继承和多态)
+            \2 局部变量：\textcolor{red}{定义在方法中的变量}，只作用于当前实例的类
+    \end{myoutline}
+\end{frame}
+\begin{frame}[fragile]{把大象装进冰箱!--OOP,伪代码}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{lstlisting}
+class Box():
+    """盒子类，实现了开门、关门方法"""
+
+    def open_door(self):
+        pass
+
+    def close_door(self):
+        pass
+
+class IceBox(Box):
+    """冰箱"""
+
+    def ice(self):
+        """制冷"""
+        pass
+
+class WaterBox(Box):
+    """洗衣机"""
+    
+    def add_water(self):
+        """加水"""
+            pass
+        \end{lstlisting}
+        \column{0.5\textwidth}
+        \begin{lstlisting}
+    def sub_water(self):
+        """排水"""
+        pass   
+
+    def wash(self):
+        """洗涤"""
+        pass
+
+a = "大象"
+ice_box = IceBox()   # 冰箱对象
+ice_box.open_door()  # 通知冰箱开门
+push(a)   # 推大象进入
+ice_box.close_door()  # 通知冰箱关门
+
+
+# 那我想关老虎呢？
+b = "老虎"
+ice_box.open_door()  # 通知冰箱开门
+push(b)   # 推老虎进入
+ice_box.close_door()  # 通知冰箱关门
+            \end{lstlisting}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}[standout]{创建类-以碱基互补配对为例}
+    \begin{myoutline}
+        \1 Class: BioBase(大驼峰命名法)
+        \1 实现\_\_init\_\_()方法(接受碱基类型, 分子量)
+        \1 实现属性
+            \2 碱基
+            \2 分子量
+        \1 实现方法
+            \2 获取碱基
+            \2 获取分子量
+            \2 获取互补配对的碱基
+            \2 设置分子量
+        \1 实例化
+        \1 类变量(互补配对 dict)
+        \1 实例变量(分子量)
+
+    \end{myoutline}
+\end{frame}
+
+
+
+
+
+% class Employee:
+%    '所有员工的基类'
+%    empCount = 0
+ 
+%    def __init__(self, name, salary):
+%       self.name = name
+%       self.salary = salary
+%       Employee.empCount += 1
+   
+%    def displayCount(self):
+%      print "Total Employee %d" % Employee.empCount
+ 
+%    def displayEmployee(self):
+%       print "Name : ", self.name,  ", Salary: ", self.salary
+
+
+% empCount 变量是一个类变量，它的值将在这个类的所有实例之间共享。你可以在内部类或外部类使用 Employee.empCount 访问。
+
+% 第一种方法__init__()方法是一种特殊的方法，被称为类的构造函数或初始化方法，当创建了这个类的实例时就会调用该方法
+
+% self 代表类的实例，self 在定义类的方法时是必须有的，虽然在调用时不必传入相应的参数。
+
+
+% self代表类的实例，而非类
+% 类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。
+
+
+% class Test:
+%     def prt(self):
+%         print(self)
+%         print(self.__class__)
+ 
+% t = Test()
+% t.prt()
+
+
+% 以上实例执行结果为：
+
+% <__main__.Test instance at 0x10d066878>
+% __main__.Test
+
+
+
+% 从执行结果可以很明显的看出，self 代表的是类的实例，代表当前对象的地址，而 self.__class__ 则指向类。
+
+% self 不是 python 关键字，我们把他换成 runoob 也是可以正常执行的:
+
+
+% class Test:
+%     def prt(runoob):
+%         print(runoob)
+%         print(runoob.__class__)
+ 
+% t = Test()
+% t.prt()
+
+
+% 以上实例执行结果为：
+
+% <__main__.Test instance at 0x10d066878>
+% __main__.Test
+
+
+
+% 创建实例对象
+% 实例化类其他编程语言中一般用关键字 new，但是在 Python 中并没有这个关键字，类的实例化类似函数调用方式。
+
+% 以下使用类的名称 Employee 来实例化，并通过 __init__ 方法接收参数。
+
+% "创建 Employee 类的第一个对象"
+% emp1 = Employee("Zara", 2000)
+% "创建 Employee 类的第二个对象"
+% emp2 = Employee("Manni", 5000)
+
+
+
+% 访问属性
+% 您可以使用点号 . 来访问对象的属性。使用如下类的名称访问类变量:
+
+% emp1.displayEmployee()
+% emp2.displayEmployee()
+% print "Total Employee %d" % Employee.empCount
+
+
+
+% Python内置类属性
+% __dict__ : 类的属性（包含一个字典，由类的数据属性组成）
+% __doc__ :类的文档字符串
+% __name__: 类名
+% __module__: 类定义所在的模块（类的全名是'__main__.className'，如果类位于一个导入模块mymod中，那么className.__module__ 等于 mymod）
+% __bases__ : 类的所有父类构成元素（包含了一个由所有父类组成的元组）
+% Python内置类属性调用实例如下：
+
+
+% class Employee:
+%    '所有员工的基类'
+%    empCount = 0
+ 
+%    def __init__(self, name, salary):
+%       self.name = name
+%       self.salary = salary
+%       Employee.empCount += 1
+   
+%    def displayCount(self):
+%      print "Total Employee %d" % Employee.empCount
+ 
+%    def displayEmployee(self):
+%       print "Name : ", self.name,  ", Salary: ", self.salary
+ 
+% print "Employee.__doc__:", Employee.__doc__
+% print "Employee.__name__:", Employee.__name__
+% print "Employee.__module__:", Employee.__module__
+% print "Employee.__bases__:", Employee.__bases__
+% print "Employee.__dict__:", Employee.__dict__
+
+
+
+
+
+% 类的继承
+% 面向对象的编程带来的主要好处之一是代码的重用，实现这种重用的方法之一是通过继承机制。
+
+% 通过继承创建的新类称为子类或派生类，被继承的类称为基类、父类或超类。
+
+% 继承语法
+
+% class 派生类名(基类名)
+%     ...
+% 在python中继承中的一些特点：
+
+% 1、如果在子类中需要父类的构造方法就需要显式的调用父类的构造方法，或者不重写父类的构造方法。详细说明可查看： python 子类继承父类构造函数说明。
+% 2、在调用基类的方法时，需要加上基类的类名前缀，且需要带上 self 参数变量。区别在于类中调用普通函数时并不需要带上 self 参数
+% 3、Python 总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。
+% 如果在继承元组中列了一个以上的类，那么它就被称作"多重继承" 。
+
+% 语法：
+
+% 派生类的声明，与他们的父类类似，继承的基类列表跟在类名之后，如下所示：
+
+% class SubClassName (ParentClass1[, ParentClass2, ...]):
+%     ...
+% 实例
+% #!/usr/bin/python
+% # -*- coding: UTF-8 -*-
+ 
+% class Parent:        # 定义父类
+%    parentAttr = 100
+%    def __init__(self):
+%       print "调用父类构造函数"
+ 
+%    def parentMethod(self):
+%       print '调用父类方法'
+ 
+%    def setAttr(self, attr):
+%       Parent.parentAttr = attr
+ 
+%    def getAttr(self):
+%       print "父类属性 :", Parent.parentAttr
+ 
+% class Child(Parent): # 定义子类
+%    def __init__(self):
+%       print "调用子类构造方法"
+ 
+%    def childMethod(self):
+%       print '调用子类方法'
+ 
+% c = Child()          # 实例化子类
+% c.childMethod()      # 调用子类的方法
+% c.parentMethod()     # 调用父类方法
+% c.setAttr(200)       # 再次调用父类的方法 - 设置属性值
+% c.getAttr()          # 再次调用父类的方法 - 获取属性值
+% 以上代码执行结果如下：
+
+% 调用子类构造方法
+% 调用子类方法
+% 调用父类方法
+% 父类属性 : 200
+% 你可以继承多个类
+
+% class A:        # 定义类 A
+% .....
+
+% class B:         # 定义类 B
+% .....
+
+% class C(A, B):   # 继承类 A 和 B
+% .....
+% 你可以使用issubclass()或者isinstance()方法来检测。
+
+% issubclass() - 布尔函数判断一个类是另一个类的子类或者子孙类，语法：issubclass(sub,sup)
+% isinstance(obj, Class) 布尔函数如果obj是Class类的实例对象或者是一个Class子类的实例对象则返回true。
+% 方法重写
+% 如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法：
+
+% 实例：
+
+% 实例
+% #!/usr/bin/python
+% # -*- coding: UTF-8 -*-
+ 
+% class Parent:        # 定义父类
+%    def myMethod(self):
+%       print '调用父类方法'
+ 
+% class Child(Parent): # 定义子类
+%    def myMethod(self):
+%       print '调用子类方法'
+ 
+% c = Child()          # 子类实例
+% c.myMethod()         # 子类调用重写方法
+% 执行以上代码输出结果如下：
+
+% 调用子类方法
+% 基础重载方法
+% 下表列出了一些通用的功能，你可以在自己的类重写：
+
+% 序号	方法, 描述 & 简单的调用
+% 1	__init__ ( self [,args...] )
+% 构造函数
+% 简单的调用方法: obj = className(args)
+% 2	__del__( self )
+% 析构方法, 删除一个对象
+% 简单的调用方法 : del obj
+% 3	__repr__( self )
+% 转化为供解释器读取的形式
+% 简单的调用方法 : repr(obj)
+% 4	__str__( self )
+% 用于将值转化为适于人阅读的形式
+% 简单的调用方法 : str(obj)
+% 5	__cmp__ ( self, x )
+% 对象比较
+% 简单的调用方法 : cmp(obj, x)
+% 运算符重载
+% Python同样支持运算符重载，实例如下：
+
+% 实例
+% #!/usr/bin/python
+ 
+% class Vector:
+%    def __init__(self, a, b):
+%       self.a = a
+%       self.b = b
+ 
+%    def __str__(self):
+%       return 'Vector (%d, %d)' % (self.a, self.b)
+   
+%    def __add__(self,other):
+%       return Vector(self.a + other.a, self.b + other.b)
+ 
+% v1 = Vector(2,10)
+% v2 = Vector(5,-2)
+% print v1 + v2
+% 以上代码执行结果如下所示:
+
+% Vector(7,8)
+% 类属性与方法
+% 类的私有属性
+% __private_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 self.__private_attrs。
+
+% 类的方法
+% 在类的内部，使用 def 关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数 self,且为第一个参数
+
+% 类的私有方法
+% __private_method：两个下划线开头，声明该方法为私有方法，不能在类的外部调用。在类的内部调用 self.__private_methods
+
+% 实例
+% #!/usr/bin/python
+% # -*- coding: UTF-8 -*-
+ 
+% class JustCounter:
+%     __secretCount = 0  # 私有变量
+%     publicCount = 0    # 公开变量
+ 
+%     def count(self):
+%         self.__secretCount += 1
+%         self.publicCount += 1
+%         print self.__secretCount
+ 
+% counter = JustCounter()
+% counter.count()
+% counter.count()
+% print counter.publicCount
+% print counter.__secretCount  # 报错，实例不能访问私有变量
+% Python 通过改变名称来包含类名:
+
+% 1
+% 2
+% 2
+% Traceback (most recent call last):
+%   File "test.py", line 17, in <module>
+%     print counter.__secretCount  # 报错，实例不能访问私有变量
+% AttributeError: JustCounter instance has no attribute '__secretCount'
+% Python不允许实例化的类访问私有数据，但你可以使用 object._className__attrName（ 对象名._类名__私有属性名 ）访问属性，参考以下实例：
+
+% #!/usr/bin/python
+% # -*- coding: UTF-8 -*-
+
+% class Runoob:
+%     __site = "www.runoob.com"
+
+% runoob = Runoob()
+% print runoob._Runoob__site
+% 执行以上代码，执行结果如下：
+
+% www.runoob.com
+% 单下划线、双下划线、头尾双下划线说明：
+% __foo__: 定义的是特殊方法，一般是系统定义名字 ，类似 __init__() 之类的。
+
+% _foo: 以单下划线开头的表示的是 protected 类型的变量，即保护类型只能允许其本身与子类进行访问，不能用于 from module import *
+
+% __foo: 双下划线的表示的是私有类型(private)的变量, 只能是允许这个类本身进行访问了。

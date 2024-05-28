@@ -1,0 +1,40 @@
+\subsection{IO操作}
+\begin{frame}[standout] IO操作 \end{frame}
+\begin{frame}{IO操作-文件打开或创建}
+    在 Python 中使用文件的关键函数是 open() 函数。
+    open() 函数有两个参数：文件名和模式。
+    \begin{myoutline}
+        \1 文件名
+        \1 模式
+            \2 文件打开模式
+                \3 r 读取 - \textcolor{red}{默认值}。打开文件进行读取，如果文件不存在则报错。
+                \3 a 追加 - 打开供追加的文件，如果不存在则创建该文件。
+                \3 w 写入 - 打开文件进行写入，如果文件不存在则创建该文件。
+                \3 x 创建 - 创建指定的文件，如果文件存在则返回错误。
+            \2 读作文本或二进制
+                \3 t 文本 - \textcolor{red}{默认值}。文本模式。
+                \3 b 二进制 - 二进制模式（例如图像）。
+    \end{myoutline}
+\end{frame}
+
+\begin{frame}{IO操作-文件写入和读取}
+    \begin{myoutline}
+        \1 open() 函数返回文件对象
+        \1 写入: 文件对象的 write 方法
+        \1 读取: 文件对象的 read 方法用于读取文件的内容
+            \2 read() 默认情况下, read() 方法返回整个文本，也可以指定要返回的字符数
+            \2 readline() \textcolor{red}{readline() 方法每次}返回一行(iterator)
+            \2 readlines() 把文件当做 list 返回,一行为一个元素
+    \end{myoutline}
+
+
+\end{frame}
+
+\begin{frame}[fragile]{IO操作-文件关闭和删除}
+    \begin{lstlisting}
+import os
+
+os.remove("demofile.txt")  \# 删除文件
+os.rmdir("myfolder")  \# 删除文件夹
+    \end{lstlisting}
+\end{frame}

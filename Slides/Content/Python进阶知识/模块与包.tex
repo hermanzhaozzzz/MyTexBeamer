@@ -1,0 +1,66 @@
+\subsection{模块与包}
+\begin{frame}[standout] 模块与包 \end{frame}
+\begin{frame}{模块与包的概念}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{myoutline}
+            \1 内建对象(Built-in Bbjects)
+                \2 print(), str()
+                \2 int, str, float
+                \2 dir(\_\_builtins\_\_) 
+            \1 模块(Module)
+                \2 需要import导入
+                \2 使用 Python 编写的模块.py
+                \2 使用 C 编写的动态加载模块(.dll, .pyd, .so, .sl等)
+                \2 内建的 C 编写的模块 sys.builtin\_module\_names
+            \1 包(Package)
+                \2 需要import导入
+                \2 可包含子模块或递归地包含子包的 Python \textcolor{red}{模块}
+                \2 从技术上说，包是带有 \_\_path\_\_ 属性的 Python 模块。
+                \2 简单来说，它更像是一个文件夹。
+        \end{myoutline}
+        \column{0.5\textwidth}
+        \begin{myoutline}
+            \1 标准库(Standard Library)
+                \2 标准库相当于解释器的外部扩展，在我们安装 python 解释器的时候，就一块安装上了。
+                \2 它并不会随着解释器的启动而启动(builtins)，要想使用这些外部扩展，必须提前导入(os)。
+                \2 os, sys, time等这些内置模块的的集合
+            \1 第三模块,包
+        %         \2 使用pip, conda等安装的网上发布的Python 扩展包或者其他语言比如 C, Rust写的扩展包
+        %         \2 演示: 寻找第三方包的安装位置
+            \1 sys.path
+                \2 自定义模块、包——需要先放到python环境变量(sys.path)目录下后 再导入
+        \end{myoutline}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{演示}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{myoutline}
+            \1 安装一个第三方包, 如 pandas, matplotlib
+                \2 导入包, 并演示功能
+                \2 ctr/cmd 鼠标点击包名进入包源代码中
+            \1 自己创建一个自定义模块
+                \2 导入模块中的函数, 并演示功能
+                \2 \_\_name\_\_变量
+                    \3 运行本文件则为\_\_name\_\_
+                    \3 在别的 py 文件中导入后运行则为模块名!
+                \2 \_\_pycache\_\_
+                    \3  python mymodule.cpython-39.pyc
+        \end{myoutline}
+        \column{0.5\textwidth}
+        \begin{lstlisting}
+def myprint():
+    print("我在我的模块里!")
+    print(__name__)
+
+
+if __name__ == "__main__":
+    myprint()
+# myprint()
+        \end{lstlisting}
+    \end{columns}
+\end{frame}
+
+

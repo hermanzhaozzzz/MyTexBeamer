@@ -1,0 +1,65 @@
+\subsection{函数}
+\begin{frame}[standout] 函数 \end{frame}
+\begin{frame}[fragile]{函数}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{myoutline}
+            \1 定义:
+                \2 函数是一种\textcolor{red}{仅在调用时运行}的代码块
+                    \3 全局变量(函数外部创建的变量)
+                    \3 局部变量(在函数内部被赋值然后使用的变量\dots)
+                \2 可以将数据（参数）传递到函数中
+                \2 函数可以把数据作为结果返回
+            \1 种类:
+                \2 内置函数(str(), float(), int()\dots)
+                \2 自定义函数
+                    \3 无参数, 返回值
+                    \3 无参数,有返回值
+                    \3 位置参数
+                    \3 关键字参数
+                    \3 参数数目不确定 *args
+                    \3 参数数目不确定 **kwargs
+                \2 匿名函数(不推荐, 不易读)
+                \2 递归函数(不易读)
+                \2 装饰器(了解,用到再讲)
+        \end{myoutline}
+        \column{0.25\textwidth}
+        \begin{lstlisting}
+# test1
+def myfunc():
+    x = 1
+    return
+print(x)
+# test2
+X = 1
+def myfunc2():
+    print(X)
+    return
+myfunc2()
+print(X)
+# test3
+def myfunc3():
+    global S
+    S = 3
+    return
+print(S)
+myfunc3()
+print(S)
+
+        \end{lstlisting}
+        \column{0.25\textwidth}
+        \begin{lstlisting}
+# test4
+def func():
+    return
+
+type(func())
+a = func()
+print(a)
+priont(f'{a}')
+        \end{lstlisting}
+        
+    \end{columns}
+
+    
+\end{frame}

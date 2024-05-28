@@ -1,0 +1,117 @@
+\subsection{代码规范}
+\begin{frame}[standout] 代码规范 \end{frame}
+\begin{frame}[fragile]{PEP8规范(常用的列举)}
+    \begin{myoutline}
+        \1 代码布局
+            \2 每个缩进级别使用4个空格;连续行使用垂直对齐或者使用悬挂式缩进(额外的4个空格缩进)
+            \2 空格是首选的缩进方法
+            \2 每行最多79个字符
+            \2 二元运算符前后换行都允许，只要代码保持一致就行。对于新代码建议在\textcolor{red}{二元运算符前进行换行}
+            \2 空白行：使用\textcolor{red}{两个空白行}分隔\textcolor{red}{顶层函数和类定义}；\textcolor{red}{类方法定义使用一个空行}分隔；使用额外的空白行来分隔相关逻辑功能
+            \2 文件应该使用UTF-8编码, 且不应该有\textcolor{red}{编码声明}
+            \2 导入多个库函数应该分开依次导入；导入总是放在文件的顶部，在任何\textcolor{red}{模块注释和文档字符串之后}，在模块全局变量和常量之前；导入应按以下顺序进行：标准库导入、有关的第三方库进口、本地应用程序/库特定的导入,每组导入直接用空行分隔;避免通配符导入(import \*)
+        \1 字符串
+            \2 单引号字符串和双引号字符串相同，代码保持一致即可
+            \2 对于三引号字符串，\textcolor{red}{常用三个双引号作文档字符串}，文档字符串常用在模块的开端用以说明模块的基本功能，或紧跟函数定义的后面用以说明函数的基本功能
+        \1 空格
+            \2 避免使用无关的空格，包括空格内、逗号分号前面等; 避免在行末使用空格
+            \2 二元运算符在两侧使用一个空格
+            \2 当用于指示\textcolor{red}{关键字参数或默认参数值}时，不要在=符号周围使用空格
+    \end{myoutline}
+    \footnotenoindex{https://www.cnblogs.com/tangjielin/p/16511066.html}
+    \footnotenoindex{https://peps.python.org/pep-0008/}
+\end{frame}
+
+\begin{frame}[fragile]{PEP8规范(常用的列举)}
+    \begin{myoutline}
+        \1 使用尾部逗号(trailing commas)
+            \2 尾部逗号通常可选,除了用来说明是只有一个元素的元组tuple时
+            \2 当参数、值等列表期望经常扩展时，通常是每个值一行，再加上一个尾部逗号
+        \1 注释
+            \2 代码更改时，相应的注释也要随之高优更改
+            \2 注释应该是\textcolor{red}{完整的语句}，第一个单词应该大写，除非它是特定标识符
+            \2 \textcolor{red}{块注释}：缩进到与该代码相同的级别。块注释的每一行都以＃和一个空格开始
+            \2 \textcolor{red}{行注释}：对某一语句行进行注释，注释应该与语句至少隔开\textcolor{red}{两个空格}，用＃和一个空格开始
+            \2 对于公共的modules, functions, classes, and methods,需要写文档字符串
+            \2 注释应该是完整的语句，第一个单词应该大写，除非它是特定标识符
+        \1 命名约定
+            \2 python命名规范有点混乱,很难完全保存一致。对于新模块和包，应该遵守这些新的约定，已存在的库内部一致性更重要
+            \2 命名应该\textcolor{red}{反应其用途而非实现}
+            \2 不要将字符l(小写字母l),O(大写字母o)或I(大写字母I)作为单个字符变量名称
+            \2 \textcolor{red}{模块名应该使用简短、全小写}的名字
+            \2 \textcolor{red}{类的命名采用大驼峰命名法}，即每个单词的首字母大写
+            \2 \textcolor{red}{函数名称应该是小写的，为了提高可读性，必须使用由下划线分隔的单词}
+    \end{myoutline}
+    \footnotenoindex{https://www.cnblogs.com/tangjielin/p/16511066.html}
+    \footnotenoindex{https://peps.python.org/pep-0008/}
+    \footnotenoindex{https://google.github.io/styleguide/pyguide.html}
+\end{frame}
+\begin{frame}[fragile]{Google Python命名规范(常用的列举)}
+    \begin{myoutline}
+        \1 命名
+            \2 异常名: ExceptionName ;
+            \2 函数名: function\_name ;
+            \2 全局常量名: GLOBAL\_CONSTANT\_NAME ;
+            \2 全局变量名: global\_var\_name ;
+            \2 实例名: instance\_var\_name ;
+            \2 函数参数名: function\_parameter\_name ;
+            \2 局部变量名: local\_var\_name .
+            \2 函数名,变量名和文件名应该是描述性的,尽量避免缩写,特别要避免使用非项目人员不清楚难以理解的缩写,不要通过删除单词中的字母来进行缩写. 始终使用 .py 作为文件后缀名,不要用破折号.
+        \1 命名约定
+            \2 所谓”内部(Internal)”表示仅模块内可用, 或者, 在类内是保护或私有的。
+            \2 用单下划线(\_)开头表示模块变量或函数是protected的(使用from module import \*时不会包含)。
+            \2 用双下划线(\_\_)开头的实例变量或方法表示类内私有。
+            \2 将相关的类和顶级函数放在同一个模块里. 不像Java, 没必要限制一个类一个模块.对类名使用大写字母开头的单词(如CapWords, 即Pascal风格), 但是模块名应该用小写加下划线的方式(如lower\_with\_under.py). 尽管已经有很多现存的模块使用类似于CapWords.py这样的命名, 但现在已经不鼓励这样做, 因为如果模块名碰巧和类名一致, 这会让人困扰。
+    \end{myoutline}
+    \footnotenoindex{https://google.github.io/styleguide/pyguide.html}
+\end{frame}
+
+\begin{frame}[fragile]{Google Python命名规范(常用的列举)}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{myoutline}
+            \1 `\_\_main\_\_'和main()
+                \2 即使是一个打算被用作脚本的文件, 也应该是可导入的. 并且简单的导入不应该导致这个脚本的主功能(main functionality)被执行, 这是一种副作用. 主功能应该放在一个main()函数中.
+                \2 在Python中, pydoc以及单元测试要求模块必须是可导入的. 你的代码应该在执行主程序前总是检查 if \_\_name\_\_ == `\_\_main\_\_' , 这样当模块被导入时主程序就不会被执行.
+                \2 若使用 absl, 请使用 app.run\dots 所有的顶级代码在模块导入时都会被执行. 要小心不要去调用函数, 创建对象, 或者执行那些不应该在使用pydoc时执行的操作.
+        \end{myoutline}
+        \column{0.3\textwidth}
+        \begin{lstlisting}
+from absl import app 
+... 
+def main(argv): 
+    # process non-flag arguments
+    ... 
+
+
+if __name__ == '__main__': 
+    app.run(main)
+
+# 否则,使用:
+def main():
+    ... 
+
+
+if __name__ == '__main__': 
+    main()
+        \end{lstlisting}
+    \end{columns}
+    \footnotenoindex{https://google.github.io/styleguide/pyguide.html}
+\end{frame}
+
+\begin{frame}[fragile]{Google Python命名规范(常用的列举)}
+    \begin{myoutline}
+        \1 类型注释
+            \2 通用规则请先熟悉下PEP-484对于方法
+            \2 仅在必要时才对 self 或 cls 注释(实战课三当中进行讲解)
+            \2 若对类型没有任何显示, 请使用 Any
+            \2 无需注释模块中的所有函数
+            \2 公共的API需要注释
+            \2 在代码的安全性，清晰性和灵活性上进行权衡是否注释
+            \2 对于容易出现类型相关的错误的代码进行注释
+            \2 难以理解的代码请进行注释
+            \2 若代码中的类型已经稳定，可以进行注释
+            \2 对于一份成熟的代码，多数情况下，即使注释了所有的函数，也不会丧失太多的灵活性.
+    \end{myoutline}
+    \footnotenoindex{https://google.github.io/styleguide/pyguide.html}
+\end{frame}

@@ -1,0 +1,168 @@
+\subsection{Hello World!}
+
+\begin{frame}[standout] 第三节 \quad Python 基础知识 \end{frame}
+
+\begin{frame}{Hello World}
+    \begin{myoutline}
+        \1 提示: 输入法使用英文!
+        \1 两种运行方式
+            \2 python 的shell页面
+                \3 ``交互式'', 输入一行, 按回车, 返回一次结果, exit()退出(演示)
+                \3 应用" 在 python 中测试少量代码
+            \2 python 源代码文件``.py''
+                \3 编辑好每一行代码, 在命令行全部运行(演示)
+                \3 本质: 使用安装在\textcolor{red}{指定路径下的} python \textcolor{red}{解释器} 运行指定目录下的``.py''源代码文件(文本文件)(演示)
+            \2 源代码文件本质是``文本文件''(可以使用 cat 或者 type 命令打印到命令行)
+        \1 知识点
+            \2 ``123'' 字符串
+            \2 123 整数
+            \2 \# 注释
+                \3 注释一行
+                \3 行内注释
+        \1 使用不同 IDE 进行演示并说明不同 IDE 运行逻辑
+    \end{myoutline}
+\end{frame}
+
+% Windows
+% (Python Shell)
+% >>> print("Hello Python!")
+% Hello Python!
+% >>> print("Hello World!")
+% Hello World!
+% >>> print("Hello Windows!")
+% Hello Windows!
+% MacOS
+% >>> print("Hello MacOS!")
+% Hello MacOS!
+% Linux
+% >>> print("Hello Linux!")
+% Hello Linux!
+
+% Windows
+% python 源代码文件``.py''
+% cat .py
+% print("Hello World!")
+% print("Hello Python!")
+% print(1 + 1)
+
+% python test.py
+% Hello World!
+% Hello Python!
+% 2
+% MacOS
+
+% PyCharm
+% 新建项目, 选择解释器
+% /usr/local/Caskroom/miniconda/base/bin/python /Users/zhaohuanan/Downloads/test_PyCharm/test.py 
+% Hello PyCharm!
+
+% Jupyter Lab 缩放 150%
+% print("Hello Jupyter Lab!")
+% 打印解释器位置
+
+% Jupyterlab 笔记从这里开始!!!
+
+
+% # Hello World
+
+% ## 查看解释器位置
+% 需要使用 sys 模块
+% `sys.executable`是一个变量，记录了正在使用的 Python 解释器位置
+
+
+% ```python
+% import sys
+
+% sys.executable
+% ```
+
+% ## Hello World in JupyterLab
+
+% ## print
+% - print是一个函数名
+% - print()调用这个函数
+% - print 函数的功能是将括号中的内容打印到命令行（Jupyterlab 中是打印到 Cell 下面）
+
+
+% ```python
+% print("Hello Jupyter Lab!")
+% ```
+
+
+% ```python
+% print("123")
+% print(123)
+% # print(123)
+% ```
+
+% ## 注释
+% - 在 Python 中，使用 `#` 进行注释
+
+
+% ```python
+% # 1
+% ```
+
+
+% ```python
+% 1
+% ```
+
+% ## 字符串和数字
+% - 使用`'', "", """"""`括起来的内容，为字符串
+% - 像 `123` 这种的，就是整数， `123.45` 为浮点数, 它们都是数值型的变量
+
+% ## 补充知识
+% - 使用`""""""`三引号进行多行注释
+% - 使用`\`续航符对代码进行换行
+
+
+% ```python
+% # 多行注释，没有进行赋值操作，所以可以当做注释用
+% """
+% 123
+% 231
+% 231
+% """
+% ```
+
+% ## 使用 Jupyterlab 进行基础知识的教学
+% - 前提!
+%       - Jupyterlab 默认保存为`.ipynb`的格式,类似`Rmarkdown.Rmd`格式, 而不是`.py`, 但是可以导出`.py`
+%       - 经过了前面的演示大家知道了`.py` Python 源代码的运行机制
+%       - Python 基础知识部分会使用 Jupyterlab 及 ipynb 的笔记本格式进行代码练习和笔记, 到 Python 进阶知识,我们会使用 PyCharm 这个 IDE 以及`.py`文件进行练习
+% - 理由!
+%       - Notebook 的形式利于整理知识点, 方便边学习知识点边练习
+% - 提示!
+%       - Jupyterlab 默认将单元格（Cell）的最后一行进行输出
+%       - `;`可以使单元格（Cell）的最后一行不输出
+
+
+% ```python
+% 1 + 1
+% ```
+
+
+% ```python
+% 1 + 1;
+% ```
+
+% 演示导出`.py`
+
+
+% Python中的换行
+
+\begin{frame}[standout]{开讲之前!}
+    \begin{myoutline}
+        \1 Python 基础
+            \2 Jupyterlab学习环境
+            \2 实战课, 基础部分知识点(全面覆盖) + 练习
+            \2 在直播课程中缓冲的时间较少(每个练习和习题的用意)
+            \2 在录播课程中反复观看和揣摩
+        \1 Python 进阶
+            \2 安装 PyCharm
+            \2 适应 PyCharm 开发环境, 代码规范
+            \2 逐步向本课程实战部分过度
+    \end{myoutline}
+\end{frame}
+% 尽量全面覆盖

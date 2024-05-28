@@ -1,0 +1,22 @@
+\subsection{语法糖}
+\begin{frame}[standout] 语法糖 \end{frame}
+\begin{frame}{语法糖(Syntax Sugar)}
+    \tiny{在计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但更方便程序员使用。简而言之，语法糖让程序更加简洁，有更高的可读性}
+    \begin{myoutline}
+        \1 连续比较1 < x < 10 (x > 1 and x < 10)
+        \1 三元表达式(结果一 if 判断条件 else 结果二)
+        \1 列表推导式
+        \1 字典推导式
+        \1 集合推导式
+        \1 迭代器对象(Iterator Object)
+            \2 把一个类作为一个迭代器使用需要在类中实现两个方法 \_\_iter\_\_() 与 \_\_next\_\_() 
+        \1 生成器函数(Generator Function)(实战项目一会详细演示)(\textcolor{red}{非常重要!})
+            \2 在 Python 中，使用了 yield 的函数被称为生成器(generator).
+            \2 跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。
+            \2 在调用生成器运行的过程中，每次遇到 yield 时函数会暂停并保存当前所有的运行信息，返回 yield 的值, 并在下一次执行 next() 方法时从当前位置继续运行。
+            \2 其实for循环就在调用next方法,next是一个相对底层的方法,for循环基于它
+            \2 调用一个生成器函数(Generator Function)，返回的是一个迭代器对象(Iterator Object)。
+        \1 装饰器(了解)(实战项目中如有时间空余会演示)
+        \1 \dots
+    \end{myoutline}
+\end{frame}
